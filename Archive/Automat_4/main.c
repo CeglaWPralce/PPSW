@@ -1,5 +1,5 @@
-#include "../Library/led.h"
-#include "../Library/keyboard.h"
+#include "led.h"
+#include "keyboard.h"
 
 #define MilS 5000
 

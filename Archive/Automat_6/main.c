@@ -1,5 +1,5 @@
-#include "../Library/led.h"
-#include "../Library/keyboard.h"
+#include "led.h"
+#include "keyboard.h"
 
 #define MilS 5000
 
@@ -7,18 +7,19 @@ void Delay(unsigned int uiTimeMs) {
 	unsigned int uiCounter;
 	
 	for(uiCounter = 0; uiCounter < (MilS*uiTimeMs); uiCounter++) {
-		// Petla opózniajaca
+		
 	}
 }
 
-enum LedState{STOP, LED_LEFT, LED_RIGHT};
+enum LedState{STOP, LED_LEFT, LED_RIGHT, BLINKING};
 
 int main(){
 	
 	enum LedState eLedState = STOP;
-	
+	unsigned char ucBlinker;
 	LedInit();
 	KeyboardInit();
+	
 	
 	while(1) {
 	
@@ -38,27 +39,44 @@ int main(){
 			break;
 				
 			case LED_LEFT:
-				LedStepLeft();
 				
 				if( eKeyboardRead() == BUTTON_1) {
 					 eLedState = STOP;
 				} else {
-					
+					LedStepLeft();
 					eLedState = LED_LEFT;
 				}
 			break;
 		
 			case LED_RIGHT:
-				LedStepRight();
 				
 				if( eKeyboardRead() == BUTTON_1) {
 					 eLedState = STOP;
-				} else {
-					
+					} else if(eKeyboardRead() == BUTTON_3){
+					eLedState = BLINKING;
+					} else {
+					LedStepRight();
 					eLedState = LED_RIGHT;
 				}
 			break;
-		}
+			
+			case BLINKING:
+				
+				if (ucBlinker >= 6) { 
+						ucBlinker = 0;
+						eLedState = LED_LEFT;
+				} else {
+						if ((ucBlinker % 2) == 0) {
+							LedOn(2);
+						} else {
+							LedOn(3);
+						}
+						ucBlinker++;
+						eLedState = BLINKING;
+			}
+    break;
+				
+			}
 		
 		Delay(100);
 	}

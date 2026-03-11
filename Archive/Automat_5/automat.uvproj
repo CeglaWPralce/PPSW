@@ -405,12 +405,12 @@
             <File>
               <FileName>keyboard.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Library\keyboard.c</FilePath>
+              <FilePath>.\keyboard.c</FilePath>
             </File>
             <File>
               <FileName>led.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Library\led.c</FilePath>
+              <FilePath>.\led.c</FilePath>
             </File>
           </Files>
         </Group>
