@@ -1,0 +1,19 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+C:\Users\student\LabPpsw\Archive\Automat_6\automat.uvproj
+Project File Date:  04/23/2025
+
+<h2>Output:</h2>
+Rebuild target 'Target 1'
+assembling Startup.s...
+compiling main.c...
+main.c(1): error:  #5: cannot open source input file "../Library/led.h": No such file or directory
+compiling keyboard.c...
+keyboard.c: Error:  #5: cannot open source input file "..\Library\keyboard.c": No such file or directory
+".\automat.axf" - 2 Errors, 0 Warning(s).
+Target not created
+Clean started: Project: 'automat'
+   deleting intermediate output files for target 'Target 1'
